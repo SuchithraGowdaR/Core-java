@@ -9,7 +9,7 @@ public class PatientDTO {
 	private long phoneNumber;
 	private String disease;
 	private int age;
-	private String gender;
+	private Gender gender;
 	private String bldgroup;
 	
 	public PatientDTO() {
@@ -64,11 +64,11 @@ public class PatientDTO {
 		this.age = age;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
