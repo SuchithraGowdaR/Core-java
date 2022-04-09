@@ -4,8 +4,9 @@ public class BookDTO {
 	private int bookId;
 	private String title;
 	private String author;
+	private String publisher;
 	private float price;
-	private String adition;
+	private String edition;
 	public BookDTO() {
 		System.out.println("invoking BookDTO constructor");
 	}
@@ -27,23 +28,31 @@ public class BookDTO {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
 	public float getPrice() {
 		return price;
 	}
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public String getAdition() {
-		return adition;
+	public String getEdition() {
+		return edition;
 	}
-	public void setAdition(String adition) {
-		this.adition = adition;
+	public void setEdition(String adition) {
+		this.edition = adition;
 	}
 	@Override
 	public String toString() {
-		return "BookDTO [bookId=" + bookId + ", title=" + title + ", author=" + author + ", price=" + price
-				+ ", adition=" + adition + "]";
+		return "BookDTO [bookId=" + bookId + ", title=" + title + ", author=" + author + ", publisher=" + publisher
+				+ ", price=" + price + ", adition=" + edition + "]";
 	}
+	
 	
 	
 	

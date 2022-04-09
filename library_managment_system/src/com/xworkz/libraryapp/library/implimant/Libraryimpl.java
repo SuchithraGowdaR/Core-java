@@ -47,13 +47,15 @@ public class Libraryimpl implements Library{
 				return null;
 		 }
 		 
-		 public BookDTO updateAditionByBookTitle(String adition,String title) {
+		 public BookDTO updateEditionByBookTitle(String adition,String title) {
 			 try {
 			 System.out.println("invoking updateAditionByBookName() ");
-				System.out.println("1st arg: ContactNo: "+ adition);
-				System.out.println("2nd arg: patientName: "+ title);
+				System.out.println("1st arg: Adition: "+ adition);
+				System.out.println("2nd arg: Book Title: "+ title);
 				for (int i = 0; i < bookDTO.length; i++) {
 					if(bookDTO[i] .getTitle().equals(title)) {
+						bookDTO[i].setEdition(adition);
+						System.out.println(adition);
 						System.out.println("update succesfull");
 					}
 					else {
@@ -137,11 +139,11 @@ public class Libraryimpl implements Library{
 			 return null;
 		 }
 		 
-		 public BookDTO getBookByAdition(String adition) {
+		 public BookDTO getBookByEdition(String adition) {
 			 System.out.println("invoking getBookByAuther()");
 			 try {
 			 for (int i = 0; i < bookDTO.length; i++) {
-				if(bookDTO[i].getAdition().equals(adition)) {
+				if(bookDTO[i].getEdition().equals(adition)) {
 					System.out.println(bookDTO[i]);
 				}
 				else {
@@ -189,12 +191,12 @@ public class Libraryimpl implements Library{
 			 return 0;
 		 }
 		 
-		 public String getBookAditionById(int id) {
+		 public String getBookEditionById(int id) {
 			 System.out.println("invoking getBookIdByAdition()");
 			 try {
 			 for (int i = 0; i < bookDTO.length; i++) {
 				if(bookDTO[i].getBookId()==id) {
-					System.out.println(bookDTO[i].getAdition());
+					System.out.println(bookDTO[i].getEdition());
 				}
 				else {
 					System.out.println("can not found the book with this id");	
@@ -223,6 +225,60 @@ public class Libraryimpl implements Library{
 			 }
 			 return 0;
 		 }
+		 
+		 public String[] getAllPublishersByTitle(String title) {
+			 System.out.println("invoking getAllPublishersByTitle()");
+			 String[] Publishers=null;
+			 Publishers=new String[bookDTO.length];
+			 try {
+				
+			 for (int i = 0; i < bookDTO.length; i++) {
+				 if(bookDTO[i].getTitle().equals(title)) {
+					 Publishers[i]=bookDTO[i].getPublisher();
+					 System.out.println(bookDTO[i].getPublisher());
+			 }
+				 else {
+					 System.out.println("not found  this title");
+				 }
+			 }
+			 }catch(Exception e) {
+				 e.printStackTrace();
+			 }
+			 return Publishers;
+		 }
+		 
+		 public String[] getAllAuthers() {
+			 System.out.println("invoking getAllAuthers()"); 
+			 String[] Auther=null;
+			try {
+			 for (int i = 0; i < bookDTO.length; i++) {
+				 Auther =new String[bookDTO.length];
+				 Auther[i]=bookDTO[i].getAuthor();
+				 System.out.println(bookDTO[i].getAuthor());
+			 }
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			 return Auther;
+		 }
+		 
+		 public String[] getAllEdition() {
+			 System.out.println("invoking getAllEdition()"); 
+			 String[] Edition=null;
+			 try {
+			 for (int i = 0; i < bookDTO.length; i++) {
+				Edition=new String[bookDTO.length];
+				Edition[i]=bookDTO[i].getEdition();
+				System.out.println(bookDTO[i].getEdition());
+			 }
+			 }catch(Exception e) {
+				 e.printStackTrace();
+			 }
+			return Edition; 
+		 }
 }	
 
-
+/*getAllAuthers();
+getAllEdition();
+getPriceByBookName();
+getAutherByPublisher();*/
