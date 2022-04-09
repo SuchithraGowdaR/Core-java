@@ -67,7 +67,7 @@ public class HospitalTester {
 	hospital.getPatientByName(scn.next());
 	
 	System.out.println("enter gender");
-	hospital.getPatientBygender(scn.next());
+	hospital.getPatientBygender(Gender.valueOf(scn.next()));
 	
 	System.out.println("enter contactNumber");
 	hospital.getPatientByContactNum(scn.nextLong());
@@ -109,7 +109,12 @@ public class HospitalTester {
 		 System.out.println("enter 11 to get the patient id by name");
 		 System.out.println("enter 12 to get the patient adress by name");
 		 System.out.println("enter 13 to get the patient gender by name");
-		 
+		 System.out.println("enter 14 to get all the patient");
+		 System.out.println("enter 15 to get all the blood group");
+		 System.out.println("enter 16 to get all the gender ");
+		 System.out.println("enter 17 to update the patient adress by name");
+		 System.out.println("enter 18 to update the  gender by name");
+		 System.out.println("enter your choice ");
 		 int choice=scn.nextInt();
 		 
 		 switch(choice) {
@@ -139,7 +144,7 @@ public class HospitalTester {
 			 
 		 case 6:
 			 System.out.println("enter the gender");
-			 System.out.println(hospital.getPatientBygender(scn.next()));
+			 hospital.getPatientBygender(Gender.valueOf(scn.next()));
 			 break;
 			 
 		 case 7:
@@ -175,6 +180,28 @@ public class HospitalTester {
 		 case 13:
 			 System.out.println("enter the name");
 			 System.out.println(hospital.getpatientGenderByNmae(scn.next()));
+			 break;
+			 
+		 case 14:
+			 hospital.getAllPatients();
+			 break;
+			 
+		 case 15:
+		 		hospital.getAllBloodGroup();
+		 		break;
+		 		
+		 case 16:
+			 hospital.getAllGender();
+			 break;
+			 
+		 case 17:
+			 System.out.println("enter the new adress and patient name");
+			 hospital.UpdateAdressByPatientName(scn.next(),scn.next());
+			 break;
+			 
+		 case 18:
+			 System.out.println("enter the gender and patient id");
+			 hospital.UpdateGenderByPatientId(Gender.valueOf(scn.next()), scn.nextInt());
 			 break;
 			 
 		 default:

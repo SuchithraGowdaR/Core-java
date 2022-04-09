@@ -75,6 +75,8 @@ public class Hospitalimpl implements Hospital{
 			 try {
 			for (int i = 0; i < patientDTO.length; i++) {
 				if(patientDTO[i].getPatientName().equals(patientName)) {
+					patientDTO[i].setPhoneNumber(contactNo);
+					System.out.println(contactNo);
 				System.out.println("update succesfull");
 				}
 				else {
@@ -88,6 +90,7 @@ public class Hospitalimpl implements Hospital{
 		}
 
 		public boolean deletePatientById(int patientId) {
+			System.out.println("invoking deletePatientById() ");
 			boolean delete= false;
 			try {
 			for (int i=0 ; i<patientDTO.length ;i++){
@@ -107,7 +110,8 @@ public class Hospitalimpl implements Hospital{
 		}
 		
 		public PatientDTO getPatientByName(String patientName) {
-			// PatientDTO dto=null;
+			System.out.println("invoking getPatientByName() ");
+			PatientDTO dto=null;
 			System.out.println("inside getPatientByName()");
 			System.out.println("arg 1 patient PatientName: "+patientName);
 			try{
@@ -122,11 +126,12 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne){
 				ne.printStackTrace();
 			}
-			return null;
+			return dto;
 		}
 		
-		public PatientDTO getPatientBygender(String gender) {
-			 //PatientDTO dto=null;
+		public PatientDTO getPatientBygender(Gender gender) {
+			System.out.println("invoking getPatientByGender() ");
+			 PatientDTO dto=null;
 			try {
 			for (int i = 0; i < patientDTO.length; i++) {
 				if(patientDTO[i].getGender().equals(gender)) {
@@ -140,11 +145,12 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 				ne.printStackTrace();
 			}
-			return null;
+			return dto;
 		}
 		
 		public PatientDTO getPatientByContactNum(long cntnum) {
-			 //PatientDTO dto=null;
+			System.out.println("invoking getPatientByContactNum() ");
+			 PatientDTO dto=null;
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++) {
 				if(patientDTO[i].getPhoneNumber()==cntnum) {
@@ -157,12 +163,13 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 				ne.printStackTrace();
 			}
-			return null;
+			return dto;
 		}
 		
 			
 		public  PatientDTO getPatientByAge(int age) {
-			 //PatientDTO dto=null;
+			System.out.println("invoking getPatientByAge() ");
+			 PatientDTO dto=null;
 			 try {
 			 for(int i=0 ; i<patientDTO.length ; i++) {
 				if(patientDTO[i].getAge()==age) {
@@ -175,12 +182,13 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 				ne.printStackTrace(); 
 			 }
-			return null;
+			return dto;
 		}
 		
 		
 		public PatientDTO getPatientByAdress(String adrs) {
-			//PatientDTO dto=null;
+			System.out.println("invoking getPatientByAdress() ");
+			PatientDTO dto=null;
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++) {
 				if(patientDTO[i].getAdress().equals(adrs)) {
@@ -193,11 +201,12 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 				ne.printStackTrace();
 			}
-			return null;
+			return dto;
 		}
 		
 		public String getPatientNameById(int id) {
-			//String name="";
+			System.out.println("invoking getPatientById() ");
+			String name="";
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++) {
 				if(patientDTO[i].getId()==id) {
@@ -211,11 +220,12 @@ public class Hospitalimpl implements Hospital{
 				ne.printStackTrace();
 			}
 			
-			return null;
+			return name;
 		}
 		
 		public int getpatientIdByName(String name) {
-			//int id=0;
+			System.out.println("invoking getpatientIdByName() ");
+			int id=0;
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++){
 				if(patientDTO[i].getPatientName().equals(name)) {
@@ -232,7 +242,8 @@ public class Hospitalimpl implements Hospital{
 		}
 		
 		public String getpatientAdressByNmae(String name) {
-			//String adress="";
+			System.out.println("invoking getpatientAdressByNmae() ");
+			String adress="";
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++){
 				if(patientDTO[i].getPatientName().equals(name)) {
@@ -245,11 +256,12 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 				ne.printStackTrace();
 			}
-			return null;
+			return adress;
 		}
 		
 		public Gender getpatientGenderByNmae(String name) {
-				//Gender gender=null;
+			System.out.println("invoking getpatientGenderByNmae() ");
+				Gender gender=null;
 			try {
 			for(int i=0 ; i<patientDTO.length ; i++){
 				if(patientDTO[i].getPatientName().equals(name)) {
@@ -262,7 +274,97 @@ public class Hospitalimpl implements Hospital{
 			}catch(NullPointerException ne) {
 					ne.printStackTrace();
 			 }
-			return null;
+			return gender;
 		}
 
+		public String[] getAllPatients() {
+			System.out.println("invoking getAllPatients() ");
+			String[] Patients=null;
+			try {
+			Patients=new String[patientDTO.length];
+			for (int i = 0; i < patientDTO.length; i++) {
+				Patients[i]=patientDTO[i].getPatientName();
+				System.out.println(patientDTO[i].getPatientName());
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return Patients;
+		}
+		
+		public String[] getAllBloodGroup() {
+			System.out.println("invoking getAllBloodGroup() ");
+			String[] BloodGroup=null;
+			try {
+			BloodGroup=new String[patientDTO.length];
+			for (int i = 0; i < patientDTO.length ; i++) {
+				BloodGroup[i]=patientDTO[i].getAdress();
+				System.out.println(patientDTO[i].getBldgroup());
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return BloodGroup;
+		}
+		
+		public Gender[] getAllGender() {
+			System.out.println("invoking getAllGender() ");
+			Gender[] gender=null;
+			try {
+			gender=new Gender[patientDTO.length];
+			for (int i = 0; i < patientDTO.length ; i++) {
+				gender[i]=patientDTO[i].getGender();
+				System.out.println(patientDTO[i].getGender());
+			}
+			}catch(Exception e) {
+				System.out.println("Exception");
+			}
+			return gender;
+		}
+		
+		public String UpdateAdressByPatientName(String adress,String name) {
+			System.out.println("invoking UpdateAdressByPatientName() ");
+			String adress1=null;
+			try {
+			for (int i = 0; i < patientDTO.length; i++) {
+				if(patientDTO[i].getPatientName().equals(name)) {
+					patientDTO[i].setAdress(adress);
+					System.out.println(adress);
+				}
+				else {
+					System.out.println("this patient not found");
+				}
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return adress1;
+		}
+		
+		public Gender   UpdateGenderByPatientId(Gender gender, int id) {
+			System.out.println("invoking UpdateGenderByPatientId() ");
+			Gender gnr=null;
+			try {
+			for (int i = 0; i < patientDTO.length; i++) {
+				if(patientDTO[i].getId()==id) {
+					patientDTO[i].setGender(gender);
+					System.out.println(gender);
+				}
+				else {
+					System.out.println("id not found");
+				}
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return gnr;
+		}
 }
+
+/*getAllPatients();
+  getAllBloodGroup();
+  getAllGenders();
+  UpdateAdressByPatientName();
+  UpdateGenderByPatient();
+  getStreetNoByPatientName();*/
+  

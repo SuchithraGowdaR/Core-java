@@ -15,7 +15,7 @@ public interface Hospital {
 		public void updateContactNoByPatientName(long contactNo,String patientName );
 		public boolean deletePatientById(int patientId); 		
 		public PatientDTO getPatientByName(String patientName);
-		public PatientDTO getPatientBygender(String gender) ;
+		public PatientDTO getPatientBygender(Gender gender) ;
 		public PatientDTO getPatientByContactNum(long cntnum);
 			
 		public  PatientDTO getPatientByAge(int age);
@@ -25,5 +25,9 @@ public interface Hospital {
 		public int getpatientIdByName(String name);
 		public String getpatientAdressByNmae(String name);
 		public Gender getpatientGenderByNmae(String name);
-			
+		public String[] getAllPatients();	
+		public String[] getAllBloodGroup();
+		public Gender[] getAllGender();
+		public String UpdateAdressByPatientName(String adress,String name);
+		public Gender   UpdateGenderByPatientId(Gender gender, int id);
 }
